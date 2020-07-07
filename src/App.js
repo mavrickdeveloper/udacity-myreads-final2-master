@@ -46,8 +46,8 @@ class BooksApp extends React.Component {
     BooksAPI.update(addedbook, shelf).then( response => {
       addedbook.shelf = shelf
       addedBooks.push(addedbook);
-        this.setState({ books: addedBooks })
-        this.setState({ searchedBooks: [] })
+        this.setState({ books: addedBooks,searchedBooks: []  })
+     
         
     })
 
