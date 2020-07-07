@@ -5,8 +5,10 @@ class Shelf extends React.Component {
   /*
   prior to returning the books result, they are filtered according to shelf category that has been selected
   */
+
+
   render() {
-    const { books } = this.props;
+    const { books,updateBook } = this.props;
     const currentlyReading = books.filter( book => book.shelf === "currentlyReading");
     const wantToRead = books.filter(book => book.shelf === "wantToRead");
     const read = books.filter(book => book.shelf === "read");
@@ -23,6 +25,7 @@ class Shelf extends React.Component {
                     books={ this.props.books }
                     book={ book }
                     shelfUp={this.props.shelfUp}
+                    updateBook={updateBook}
                   />
                 </li>
               ))

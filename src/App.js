@@ -1,11 +1,10 @@
 
 import React from 'react';
 import * as BooksAPI from './BooksAPI';
-import './App.css';
 import Shelf from './Shelf';
 import Search from './Search';
 import { Route, Link } from 'react-router-dom';
-
+import './App.css';
 class BooksApp extends React.Component {
   state = {books: [],searchedBooks: [],isLoading: true,
   }
@@ -46,13 +45,14 @@ class BooksApp extends React.Component {
   shelfUp = (addedbook, shelf) => {
     BooksAPI.update(addedbook, shelf).then( response => {
       addedbook.shelf = shelf
+      addedBooks.push(addedbook);
+        this.setState({ books: addedBooks })
+        this.setState({ searchedBooks: [] })
+        
     })
 
     let addedBooks = this.state.books.filter( book => book.id !== addedbook.id )
-    addedBooks.push(addedbook);
-    this.setState({ books: addedBooks })
-   	this.setState({ searchedBooks: [] })
-    this.componentDidMount()
+
   }
 
   render() {
